@@ -15,6 +15,8 @@ FLAGS    := -Wall -Wextra -Werror
 ################################################################################
 
 SRCS        :=      main.c \
+					mandelbrot.c \
+					julia.c \
                           
 OBJS        := $(SRCS:.c=.o)
 
@@ -26,7 +28,7 @@ OBJS        := $(SRCS:.c=.o)
 ################################################################################
 
 $(NAME): $(OBJ)
-	$(CC) $(SRCS) libmlx42.a -lglfw -L /opt/homebrew/Cellar/glfw/3.3.8/lib/
+	$(CC) $(SRCS) libmlx42.a -lglfw -L /Users/ljerinec/.brew/Cellar/glfw/3.3.8/lib/
 
 all: ${NAME}
 
