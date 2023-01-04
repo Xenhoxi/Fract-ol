@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Julia.c                                            :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljerinec <ljerinec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 16:01:52 by ljerinec          #+#    #+#             */
-/*   Updated: 2023/01/02 16:03:17 by ljerinec         ###   ########.fr       */
+/*   Updated: 2023/01/03 16:40:01 by ljerinec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	in_julia_set(int x0, int y0, int max_iter, t_fractal *fractal)
 	double	cy;
 	double	x_new;
 
-	cx = 0.5;
-	cy = -0.5;
+	cx = -0.8;
+	cy = .156;
 	fractal->x = x0 * fractal->xtt / IMGWIDTH + fractal->x_min;
 	fractal->y = y0 * fractal->ytt / IMGHEIGHT + fractal->y_min;
 	iteration = 0;
