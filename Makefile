@@ -30,6 +30,10 @@ OBJS        := $(SRCS:.c=.o)
 $(NAME): $(OBJ)
 	$(CC) $(SRCS) MLX42/libmlx42.a -lglfw -L /Users/ljerinec/.brew/Cellar/glfw/3.3.8/lib/
 
+home: $(OBJ)
+	@make -C MLX42
+	$(CC) $(SRCS) MLX42/libmlx42.a -lglfw -L /opt/homebrew/Cellar/glfw/3.3.8/lib/
+
 all: ${NAME}
 
 clean:
