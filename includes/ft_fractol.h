@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fractol.h                                       :+:      :+:    :+:   */
+/*   ft_fract-ol.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ljerinec <ljerinec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 17:48:53 by ljerinec          #+#    #+#             */
-/*   Updated: 2023/01/03 16:50:46 by ljerinec         ###   ########.fr       */
+/*   Updated: 2023/03/13 11:53:41 by ljerinec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define IMGWIDTH 1000
 # define IMGHEIGHT 680
 
-# include "MLX42/include/MLX42/MLX42.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -44,6 +44,5 @@ int			in_mandelbrot_set(int x0, int y0, int max_iter, t_fractal *fractal);
 int			in_julia_set(int x0, int y0, int max_iter, t_fractal *fractal);
 void		render_fractal(void *param);
 u_int32_t	chose_color(int iteration, int max_iter);
-int			in_mandelbrot_set_test(int x0, int y0, int max_iter, t_fractal *fractal);
 
 #endif
