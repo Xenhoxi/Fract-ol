@@ -6,7 +6,7 @@
 /*   By: ljerinec <ljerinec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:49:41 by ljerinec          #+#    #+#             */
-/*   Updated: 2023/03/13 13:32:21 by ljerinec         ###   ########.fr       */
+/*   Updated: 2023/03/14 13:49:42 by ljerinec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,35 +71,7 @@ void	fractal_key_hook(mlx_key_data_t key_datas, void *param)
 		mlx_close_window(fractal->mlx);
 }
 
-void	setup_mandelbrot(t_fractal *fractal)
-{
-	fractal->x_min = -2 * fractal->zoom;
-	fractal->x_max = 0.47 * fractal->zoom;
-	fractal->y_min = -1.12 * fractal->zoom;
-	fractal->y_max = 1.12 * fractal->zoom;
-	fractal->cx = 0;
-	fractal->cy = 0;
-	fractal->xtt = fractal->x_max - fractal->x_min;
-	fractal->ytt = fractal->y_max - fractal->y_min;
-	fractal->g_img = mlx_new_image(fractal->mlx, WIDTH, HEIGHT);
-	printf("Structure Mandelbrot OK !");
-}
-
-void	setup_julia(t_fractal *fractal, double cx, double cy)
-{
-	fractal->x_min = -2;
-	fractal->x_max = 2;
-	fractal->y_min = -2;
-	fractal->y_max = 2;
-	fractal->cx = cx;
-	fractal->cy = cy;
-	fractal->xtt = fractal->x_max - fractal->x_min;
-	fractal->ytt = fractal->y_max - fractal->y_min;
-	fractal->g_img = mlx_new_image(fractal->mlx, WIDTH, HEIGHT);
-	printf("Structure Julia OK !");
-}
-
-int	main(void)
+int	main(int argc, char **argv)
 {
 	mlx_t		*mlx;
 	t_fractal	fractal;
@@ -109,8 +81,7 @@ int	main(void)
 		exit(EXIT_FAILURE);
 	fractal.mlx = mlx;
 	fractal.zoom = 1;
-	setup_mandelbrot(&fractal);
-	// setup_julia(&fractal);
+	parsing(argc, argv, &fractal);
 	// mlx_loop_hook(mlx, &render_fractal, &fractal);
 	mlx_key_hook(mlx, &fractal_key_hook, &fractal);
 	render_fractal(&fractal);
