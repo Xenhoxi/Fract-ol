@@ -6,7 +6,7 @@
 /*   By: ljerinec <ljerinec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:49:41 by ljerinec          #+#    #+#             */
-/*   Updated: 2023/03/14 13:49:42 by ljerinec         ###   ########.fr       */
+/*   Updated: 2023/03/14 14:53:16 by ljerinec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	render_fractal(void *param)
 	{
 		while (y0++ < IMGHEIGHT)
 		{
-			i = in_mandelbrot_set(x0, y0, max_iter, fractal);
+			i = in_juliagit _set(x0, y0, max_iter, fractal);
 			mlx_put_pixel(fractal->g_img, x0, y0, chose_color(i, max_iter));
 			i = 0;
 		}

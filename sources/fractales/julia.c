@@ -6,7 +6,7 @@
 /*   By: ljerinec <ljerinec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 16:01:52 by ljerinec          #+#    #+#             */
-/*   Updated: 2023/03/14 14:21:10 by ljerinec         ###   ########.fr       */
+/*   Updated: 2023/03/14 14:38:56 by ljerinec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	in_julia_set(int x0, int y0, int max_iter, t_fractal *fractal)
 	double	cy;
 	double	x_new;
 
-	cx = fractal->cx;
-	cy = fractal->cy;
 	fractal->x = x0 * fractal->xtt / IMGWIDTH + fractal->x_min;
 	fractal->y = y0 * fractal->ytt / IMGHEIGHT + fractal->y_min;
 	iteration = 0;
@@ -28,8 +26,8 @@ int	in_julia_set(int x0, int y0, int max_iter, t_fractal *fractal)
 			* fractal->y) <= 4 && iteration < max_iter)
 	{
 		x_new = fractal->x * fractal->x - fractal->y * fractal->y;
-		fractal->y = 2 * fractal->x * fractal->y + cy;
-		fractal->x = x_new + cx;
+		fractal->y = 2 * fractal->x * fractal->y + fractal->cy;
+		fractal->x = x_new + fractal->cx;
 		iteration++;
 	}
 	return (iteration);
