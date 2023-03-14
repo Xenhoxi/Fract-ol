@@ -6,7 +6,7 @@
 /*   By: ljerinec <ljerinec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:49:41 by ljerinec          #+#    #+#             */
-/*   Updated: 2023/03/13 12:13:54 by ljerinec         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:32:21 by ljerinec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	hook(void *param)
 
 	fractal = param;
 	mlx = fractal->mlx;
+	// render_fractal(fractal);
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(mlx);
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
 	{
 		fractal->zoom += 1;
@@ -74,18 +77,22 @@ void	setup_mandelbrot(t_fractal *fractal)
 	fractal->x_max = 0.47 * fractal->zoom;
 	fractal->y_min = -1.12 * fractal->zoom;
 	fractal->y_max = 1.12 * fractal->zoom;
+	fractal->cx = 0;
+	fractal->cy = 0;
 	fractal->xtt = fractal->x_max - fractal->x_min;
 	fractal->ytt = fractal->y_max - fractal->y_min;
 	fractal->g_img = mlx_new_image(fractal->mlx, WIDTH, HEIGHT);
 	printf("Structure Mandelbrot OK !");
 }
 
-void	setup_julia(t_fractal *fractal)
+void	setup_julia(t_fractal *fractal, double cx, double cy)
 {
 	fractal->x_min = -2;
 	fractal->x_max = 2;
 	fractal->y_min = -2;
 	fractal->y_max = 2;
+	fractal->cx = cx;
+	fractal->cy = cy;
 	fractal->xtt = fractal->x_max - fractal->x_min;
 	fractal->ytt = fractal->y_max - fractal->y_min;
 	fractal->g_img = mlx_new_image(fractal->mlx, WIDTH, HEIGHT);
@@ -102,13 +109,11 @@ int	main(void)
 		exit(EXIT_FAILURE);
 	fractal.mlx = mlx;
 	fractal.zoom = 1;
-	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(mlx);
 	setup_mandelbrot(&fractal);
 	// setup_julia(&fractal);
-	//render_fractal(&fractal);
 	// mlx_loop_hook(mlx, &render_fractal, &fractal);
 	mlx_key_hook(mlx, &fractal_key_hook, &fractal);
+	render_fractal(&fractal);
 	mlx_loop_hook(mlx, &hook, &fractal);
 	mlx_loop(mlx);
 	return (EXIT_SUCCESS);
