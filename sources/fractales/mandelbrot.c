@@ -6,7 +6,7 @@
 /*   By: ljerinec <ljerinec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 16:14:10 by ljerinec          #+#    #+#             */
-/*   Updated: 2023/03/14 14:50:38 by ljerinec         ###   ########.fr       */
+/*   Updated: 2023/03/17 10:49:14 by ljerinec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	in_mandelbrot_set(int x0, int y0, int max_iter, t_fractal *fractal)
 	double		cy;
 	double		x_new;
 
-	cx = x0 * fractal->xtt / IMGWIDTH + fractal->x_min;
-	cy = y0 * fractal->ytt / IMGHEIGHT + fractal->y_min;
+	cx = x0 * fractal->xtt / WIDTH + fractal->x_min;
+	cy = y0 * fractal->ytt / HEIGHT + fractal->y_min;
 	fractal->x = 0;
 	fractal->y = 0;
 	iteration = 0;
@@ -37,6 +37,7 @@ int	in_mandelbrot_set(int x0, int y0, int max_iter, t_fractal *fractal)
 
 void	setup_mandelbrot(t_fractal *fractal)
 {
+	fractal->set = "Mandelbrot";
 	fractal->x_min = -2 * fractal->zoom;
 	fractal->x_max = 0.47 * fractal->zoom;
 	fractal->y_min = -1.12 * fractal->zoom;
@@ -45,5 +46,4 @@ void	setup_mandelbrot(t_fractal *fractal)
 	fractal->cy = 0;
 	fractal->xtt = fractal->x_max - fractal->x_min;
 	fractal->ytt = fractal->y_max - fractal->y_min;
-	fractal->g_img = mlx_new_image(fractal->mlx, WIDTH, HEIGHT);
 }

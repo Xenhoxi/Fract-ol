@@ -6,17 +6,16 @@
 /*   By: ljerinec <ljerinec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 17:48:53 by ljerinec          #+#    #+#             */
-/*   Updated: 2023/03/14 13:57:36 by ljerinec         ###   ########.fr       */
+/*   Updated: 2023/03/21 12:06:25 by ljerinec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_FRACTOL_H
 
 # define FT_FRACTOL_H
-# define WIDTH 1280
-# define HEIGHT 780
-# define IMGWIDTH 1000
-# define IMGHEIGHT 680
+
+# define WIDTH 800
+# define HEIGHT 800
 
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
@@ -26,10 +25,20 @@
 # include <stdio.h>
 # include <math.h>
 
+typedef struct s_data {
+	mlx_t	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}			t_data;
+
 typedef struct s_fractal
 {
-	void		*mlx;
-	mlx_image_t	*g_img;
+	char		*set;
+	t_data		*mlx;
 	double		x;
 	double		y;
 	double		x_min;
@@ -57,6 +66,7 @@ double		ft_atod(char *str);
 void		msg_help(void);
 
 // sources/fract-ol.c
+void		init_mlx(t_fractal *f);
 void		render_fractal(void *param);
 u_int32_t	chose_color(int iteration, int max_iter);
 
