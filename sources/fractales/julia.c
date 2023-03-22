@@ -6,7 +6,7 @@
 /*   By: ljerinec <ljerinec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 16:01:52 by ljerinec          #+#    #+#             */
-/*   Updated: 2023/03/17 10:44:39 by ljerinec         ###   ########.fr       */
+/*   Updated: 2023/03/21 12:16:55 by ljerinec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	in_julia_set(int x0, int y0, int max_iter, t_fractal *fractal)
 
 void	setup_julia(t_fractal *fractal, double cx, double cy)
 {
-	fractal->name = "Julia";
+	fractal->set = "Julia";
 	fractal->x_min = -2;
 	fractal->x_max = 2;
 	fractal->y_min = -2;

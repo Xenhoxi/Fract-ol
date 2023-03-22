@@ -22,7 +22,7 @@ FLAGS    = -Wall -Wextra -Werror
 LIBFT_DIR = includes/libft/libft.a
 # MLX42_INC = -lglfw -L /Users/ljerinec/.brew/Cellar/glfw/3.3.8/lib/
 MLX42_INC = -lglfw -L /opt/homebrew/Cellar/glfw/3.3.8/lib/
-MLX42_DIR = MLX42/libmlx42.a
+MLX42_DIR = MLX42/build/libmlx42.a
 
 ################################################################################
 #                                  Makefile  objs                              #
@@ -31,8 +31,6 @@ MLX42_DIR = MLX42/libmlx42.a
 all: ${NAME}
 
 $(NAME): libft $(OBJS)
-	@echo "$(PRINT_PREFIX)\033[0;38;5;226m Compiling MLX42 \033[0m\n"
-	@make -C MLX42
 	@echo "$(PRINT_PREFIX)\033[0;38;5;226m Compiling Fract-ol \033[0m\n"
 	$(CC) -o $(NAME) $(OBJS) $(MLX42_DIR) $(MLX42_INC) $(LIBFT_DIR)
 	@echo "$(PRINT_PREFIX)\033[0;38;5;226m Done \033[0m\n"
